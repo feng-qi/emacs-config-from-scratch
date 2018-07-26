@@ -18,6 +18,14 @@ If the universal prefix argument is used then kill the buffer too."
   (let ((exists (get-buffer "*scratch*")))
     (switch-to-buffer (get-buffer-create "*scratch*"))))
 
+(defun switch-to-ansi-term-buffer ()
+  "Switch to the `*ansi-term*' buffer. Create it first if needed."
+  (interactive)
+  (let ((exists (get-buffer "*ansi-term*")))
+    (if exists
+        (switch-to-buffer (get-buffer "*ansi-term*"))
+      (ansi-term "/usr/bin/zsh"))))
+
 (defun copy-whole-buffer-to-clipboard ()
   "Copy entire buffer to clipboard"
   (interactive)

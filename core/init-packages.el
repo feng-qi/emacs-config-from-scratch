@@ -22,7 +22,9 @@
 (use-package evil-numbers)
 (use-package evil-surround
   :config
-  (global-evil-surround-mode 1))
+  (global-evil-surround-mode 1)
+  (define-key evil-normal-state-map (kbd "s") 'evil-surround-region)
+  (define-key evil-normal-state-map (kbd "S") 'evil-change-whole-line))
 (use-package evil-leader
   :config
   (progn

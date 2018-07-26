@@ -1,8 +1,9 @@
 (recentf-mode)
 (define-key evil-normal-state-map (kbd "SPC TAB") 'evil-buffer)
-(define-key evil-normal-state-map (kbd "SPC '") (lambda () (interactive) (ansi-term "/usr/bin/zsh")))
+(define-key evil-normal-state-map (kbd "SPC '") 'switch-to-ansi-term-buffer)
 (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
-(define-key evil-normal-state-map (kbd "s") 'evil-surround-region)
+;; (define-key evil-normal-state-map (kbd "s") 'evil-surround-region)
+;; (define-key evil-normal-state-map (kbd "S") 'evil-change-whole-line)
 
 (require 'evil)
 (require 'evil-leader)
@@ -14,7 +15,7 @@
   "5"   'winum-select-window-5
   "6"   'winum-select-window-6
   "7"   'winum-select-window-7
-  "8"   'winum-select-window-8
+  "8"   'maximize-frame
   "9"   'winum-select-window-9
   ";"   'evilnc-comment-operator
   ;; "ff" 'ido-find-file
