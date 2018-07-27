@@ -1,9 +1,13 @@
-(recentf-mode)
-(define-key evil-normal-state-map (kbd "SPC TAB") 'evil-buffer)
-(define-key evil-normal-state-map (kbd "SPC '") 'switch-to-ansi-term-buffer)
-(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
-;; (define-key evil-normal-state-map (kbd "s") 'evil-surround-region)
-;; (define-key evil-normal-state-map (kbd "S") 'evil-change-whole-line)
+(global-set-key (kbd "C-a") #'mwim-beginning-of-code-or-line)
+(global-set-key (kbd "C-e") #'mwim-end-of-code-or-line)
+(global-set-key (kbd "M-/") #'hippie-expand)
+
+(fengqi/define-key evil-normal-state-map
+                   (kbd "SPC TAB") 'evil-buffer
+                   (kbd "SPC '")   'switch-to-ansi-term-buffer
+                   (kbd "TAB")     'indent-for-tab-command
+                   "+"             'evil-numbers/inc-at-pt
+                   "-"             'evil-numbers/dec-at-pt)
 
 (require 'evil)
 (require 'evil-leader)
@@ -18,7 +22,7 @@
   "8"   'maximize-frame
   "9"   'winum-select-window-9
   ";"   'evilnc-comment-operator
-  ;; "ff" 'ido-find-file
+  "au"  'undo-tree-visualize
   "bb"  'ivy-switch-buffer
   "bd"  'kill-buffer
   "bs"  'switch-to-scratch-buffer
@@ -27,11 +31,16 @@
   "cc"  'compile
   "cd"  'close-compilation-window
   "cr"  'recompile
+  "dw"  'delete-trailing-whitespace
+  "en"  'next-error
+  "ep"  'previous-error
   "fCr" 'revert-buffer-with-coding-system
   "fCs" 'set-buffer-file-coding-system
+  ;; "ff" 'ido-find-file
   "ff"  'counsel-find-file
-  "fr"  'recentf-open-files
+  "fr"  'counsel-recentf
   "fs"  'save-buffer
+  "fx"  'hexl-find-file
   "gs"  'magit-status
   "iv"  'rectangle-number-lines
   "se"  'evil-iedit-state/iedit-mode

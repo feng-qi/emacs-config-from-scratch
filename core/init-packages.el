@@ -1,7 +1,8 @@
 (setq use-package-always-ensure t)
 
 (use-package try)
-(use-package magit)
+(use-package magit
+  :ensure t)
 (use-package evil-magit)
 (use-package which-key
   :config
@@ -30,8 +31,8 @@
   (progn
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")))
-
 (use-package org-bullets
+  :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (use-package solarized-theme)
@@ -44,9 +45,25 @@
 (use-package counsel
   :config
   (counsel-mode))
-
 (use-package swiper)
-(use-package haskell-mode)
+(use-package haskell-mode
+  :ensure t)
+(use-package mwim
+  :ensure t)
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1)
+  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand))
+(use-package yasnippet-snippets
+  :ensure t)
+(use-package persp-mode
+  :ensure t
+  :config
+  (with-eval-after-load "persp-mode"
+    (setq wg-morph-on nil)
+    (setq persp-autokill-buffer-on-remove 'kill-weak)
+    (add-hook 'after-init-hook #'(lambda () (persp-mode 1)))))
 
 ;; (use-package evil-smartparens
 ;;   :config

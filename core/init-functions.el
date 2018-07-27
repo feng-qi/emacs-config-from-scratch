@@ -31,4 +31,8 @@ If the universal prefix argument is used then kill the buffer too."
   (interactive)
   (clipboard-kill-ring-save (point-min) (point-max)))
 
+(defun fengqi/define-key (keymap &rest bindings)
+  (while bindings
+    (define-key keymap (pop bindings) (pop bindings))))
+
 (provide 'init-functions)
