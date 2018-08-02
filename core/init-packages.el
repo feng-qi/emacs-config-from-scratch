@@ -67,6 +67,8 @@
   :ensure t
   :config
   (yas-global-mode 1)
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
   (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand))
 (use-package yasnippet-snippets
   :ensure t)
