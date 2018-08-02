@@ -60,7 +60,9 @@
   (counsel-mode))
 (use-package swiper)
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :config
+  (define-key evil-normal-state-map (kbd ", '") 'haskell-interactive-bring))
 (use-package mwim
   :ensure t)
 (use-package yasnippet
