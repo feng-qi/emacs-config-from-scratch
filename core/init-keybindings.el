@@ -1,10 +1,11 @@
 (global-set-key (kbd "C-a") #'mwim-beginning-of-code-or-line)
 (global-set-key (kbd "C-e") #'mwim-end-of-code-or-line)
 (global-set-key (kbd "M-/") #'hippie-expand)
+(global-set-key (kbd "M-=") #'count-words-region)
 
 (fengqi/define-key evil-normal-state-map
                    (kbd "SPC TAB") 'evil-buffer
-                   (kbd "SPC '")   'switch-to-ansi-term-buffer
+                   (kbd "SPC '")   'shell-pop
                    (kbd "TAB")     'indent-for-tab-command
                    "+"             'evil-numbers/inc-at-pt
                    "-"             'evil-numbers/dec-at-pt)

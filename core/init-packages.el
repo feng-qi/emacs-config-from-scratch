@@ -97,6 +97,15 @@
   :config
   (global-evil-visualstar-mode t))
 
+(use-package shell-pop
+  :config
+  (setq shell-pop-shell-type '("ansi-term" "*ansi-term*" (lambda () (ansi-term shell-pop-term-shell)))
+        shell-pop-term-shell      "/usr/bin/zsh"
+        shell-pop-window-height   20
+        shell-pop-window-position "bottom"
+        shell-pop-full-span       t)
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
+
 ;; (use-package evil-smartparens
 ;;   :config
 ;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
