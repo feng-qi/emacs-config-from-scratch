@@ -5,6 +5,9 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/core")
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -19,12 +22,17 @@
                                       (setq show-trailing-whitespace t)
                                       (turn-on-auto-fill))))
 
+(add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'c++-mode-hook        'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (setq-default show-trailing-whitespace t)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq sentence-end-double-space nil)
 
 (setq scroll-step 1)
 (setq scroll-conservatively 101)

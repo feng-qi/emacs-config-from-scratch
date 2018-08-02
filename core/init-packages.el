@@ -14,7 +14,18 @@
   (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "`" nil :actions nil))
 (use-package evil
   :config
-  (evil-mode t))
+  (evil-mode t)
+  (setq evil-normal-state-cursor   '("DarkGoldenrod2" box)
+        evil-insert-state-cursor   '("chartreuse3" (bar . 2))
+        evil-visual-state-cursor   '("gray" (hbar . 2))
+        evil-motion-state-cursor   '("plum3" box)
+        evil-replace-state-cursor  '("chocolate" (hbar . 2))
+        evil-operator-state-cursor 'evil-half-cursor))
+(use-package evil-exchange
+  :ensure t
+  :config
+  ;; (setq evil-exchange-key (kbd "gx"))
+  (evil-exchange-install))
 (use-package evil-unimpaired
   :load-path "elpa/"
   :config (evil-unimpaired-mode))
@@ -41,7 +52,9 @@
   :config (winum-mode))
 (use-package ivy
   :config
-  (ivy-mode))
+  (ivy-mode)
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line))
 (use-package counsel
   :config
   (counsel-mode))
@@ -64,6 +77,25 @@
     (setq wg-morph-on nil)
     (setq persp-autokill-buffer-on-remove 'kill-weak)
     (add-hook 'after-init-hook #'(lambda () (persp-mode 1)))))
+
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (define-key company-active-map (kbd "C-j") 'company-select-next)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous)
+  (define-key company-search-map (kbd "C-j") 'company-select-next)
+  (define-key company-search-map (kbd "C-k") 'company-select-previous))
+
+(use-package company-c-headers
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-c-headers))
+
+(use-package evil-visualstar
+  :ensure t
+  :config
+  (global-evil-visualstar-mode t))
 
 ;; (use-package evil-smartparens
 ;;   :config
