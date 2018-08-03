@@ -48,11 +48,15 @@
   "ss"  'swiper
   "nf"  'narrow-to-defun
   "nr"  'narrow-to-region
+  "oc"  'fengqi/copy-current-buffer-file-name
   "qq"  'save-buffers-kill-terminal
   "Ts"  'load-theme
   "wd"  'delete-current-window
   "wm"  'delete-other-windows
-  "wo"  'delete-other-windows)
+  "wo"  'delete-other-windows
+  "ws"  'evil-window-split
+  "wv"  'evil-window-vsplit
+  "ww"  'evil-window-next)
 
 ;; (defalias 'evil-insert-state 'evil-emacs-state)
 (setq evil-insert-state-map (make-sparse-keymap))

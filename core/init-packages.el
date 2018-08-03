@@ -59,10 +59,6 @@
   :config
   (counsel-mode))
 (use-package swiper)
-(use-package haskell-mode
-  :ensure t
-  :config
-  (define-key evil-normal-state-map (kbd ", '") 'haskell-interactive-bring))
 (use-package mwim
   :ensure t)
 (use-package yasnippet
@@ -110,9 +106,22 @@
         shell-pop-full-span       t)
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
+(use-package smart-mode-line
+  :config
+  (setq sml/theme 'respectful
+        sml/no-confirm-load-theme t)
+  (sml/setup))
+
+(use-package htmlize)
+
 ;; (use-package evil-smartparens
 ;;   :config
 ;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+
+(use-package haskell-mode
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'my-haskell-mode-config))
 
 
 (provide 'init-packages)

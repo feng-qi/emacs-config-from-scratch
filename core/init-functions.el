@@ -35,4 +35,18 @@ If the universal prefix argument is used then kill the buffer too."
   (while bindings
     (define-key keymap (pop bindings) (pop bindings))))
 
+(defun fengqi/copy-current-buffer-file-name ()
+  "Copy current current buffer file name to clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Buffer file name '%s' copied." filename))))
+
+(defun my-haskell-mode-config ()
+  (evil-local-set-key 'normal (kbd ", '") 'haskell-interactive-bring))
+
+
 (provide 'init-functions)

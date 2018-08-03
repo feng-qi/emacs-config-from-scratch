@@ -3,6 +3,7 @@
         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 (package-initialize)
+(prefer-coding-system 'utf-8)
 
 (add-to-list 'load-path "~/.emacs.d/core")
 (unless (package-installed-p 'use-package)
@@ -26,6 +27,7 @@
 (add-hook 'c++-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
+(column-number-mode 1)
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (setq-default show-trailing-whitespace t)
@@ -37,6 +39,14 @@
 (setq scroll-step 1)
 (setq scroll-conservatively 101)
 (setq auto-window-vscroll nil)
+
+(with-eval-after-load "org"
+;; (org-toggle-inline-images)
+  (setq org-export-with-section-numbers  nil
+        org-export-with-sub-superscripts nil
+        org-export-with-toc              nil
+        org-html-include-timestamps      nil
+        org-startup-with-inline-images   t))
 
 ;; (setq ido-enable-flex-matching t)
 ;; (setq ido-everywhere t)
