@@ -1,4 +1,28 @@
+;; This file contains the packages information.
+
 (setq use-package-always-ensure t)
+
+
+(use-package helm
+  :config
+  (define-key helm-map (kbd "<escape>")       #'helm-keyboard-quit)
+  (define-key helm-find-files-map (kbd "C-h") #'helm-find-files-up-one-level)
+  (define-key helm-find-files-map (kbd "C-l") #'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-j")            #'helm-next-line)
+  (define-key helm-map (kbd "C-k")            #'helm-previous-line)
+  (helm-mode 1))
+(use-package helm-ag)
+
+;; (use-package ivy
+;;   :config
+;;   (ivy-mode)
+;;   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+;;   (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line))
+(use-package counsel)
+  ;; :config
+  ;; (counsel-mode))
+(use-package swiper)
+
 
 (use-package try)
 (use-package magit
@@ -50,15 +74,6 @@
 (use-package zenburn-theme)
 (use-package winum
   :config (winum-mode))
-(use-package ivy
-  :config
-  (ivy-mode)
-  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
-  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line))
-(use-package counsel
-  :config
-  (counsel-mode))
-(use-package swiper)
 (use-package mwim
   :ensure t)
 (use-package yasnippet
@@ -113,6 +128,7 @@
   (sml/setup))
 
 (use-package htmlize)
+(use-package youdao-dictionary)
 
 ;; (use-package evil-smartparens
 ;;   :config
