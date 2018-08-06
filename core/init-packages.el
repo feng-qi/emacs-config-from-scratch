@@ -3,13 +3,15 @@
 (setq use-package-always-ensure t)
 
 
+(defun fengqi/setup-helm-find-files-key-bindings ()
+  (define-key helm-find-files-map (kbd "C-h") #'helm-find-files-up-one-level)
+  (define-key helm-find-files-map (kbd "C-l") #'helm-execute-persistent-action))
 (use-package helm
   :config
-  (define-key helm-map (kbd "<escape>")       #'helm-keyboard-quit)
-  (define-key helm-find-files-map (kbd "C-h") #'helm-find-files-up-one-level)
-  (define-key helm-find-files-map (kbd "C-l") #'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-j")            #'helm-next-line)
-  (define-key helm-map (kbd "C-k")            #'helm-previous-line)
+  (add-hook 'helm-find-files-after-init-hook #'fengqi/setup-helm-find-files-key-bindings)
+  (define-key helm-map (kbd "<escape>")      #'helm-keyboard-quit)
+  (define-key helm-map (kbd "C-j")           #'helm-next-line)
+  (define-key helm-map (kbd "C-k")           #'helm-previous-line)
   (helm-mode 1))
 (use-package helm-ag)
 
@@ -129,6 +131,11 @@
 
 (use-package htmlize)
 (use-package youdao-dictionary)
+(use-package chinese-wbim
+  :config
+  (register-input-method
+   "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+  (setq default-input-method "chinese-wbim"))
 
 ;; (use-package evil-smartparens
 ;;   :config
