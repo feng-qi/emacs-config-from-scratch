@@ -27,11 +27,13 @@
 (add-hook 'c++-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
+(electric-pair-mode t)
 (column-number-mode 1)
 (blink-cursor-mode 0)
 (global-hl-line-mode)
 (setq-default show-trailing-whitespace t)
 
+(setq ring-bell-function 'ignore)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq sentence-end-double-space nil)
@@ -39,6 +41,8 @@
 (setq scroll-step 1)
 (setq scroll-conservatively 101)
 (setq auto-window-vscroll nil)
+(setq c-default-style "k&r"
+      default-tab-width 4)
 
 (with-eval-after-load "org"
 ;; (org-toggle-inline-images)
@@ -81,3 +85,4 @@
 
 (setq custom-file (expand-file-name "customize-group-setup.el" user-emacs-directory))
 (load custom-file 'no-error 'no-message)
+(put 'narrow-to-region 'disabled nil)

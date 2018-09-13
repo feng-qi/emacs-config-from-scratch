@@ -1,3 +1,4 @@
+(global-set-key (kbd "<escape>") #'keyboard-escape-quit)
 (global-set-key (kbd "C-a") #'mwim-beginning-of-code-or-line)
 (global-set-key (kbd "C-e") #'mwim-end-of-code-or-line)
 (global-set-key (kbd "M-/") #'hippie-expand)
@@ -51,6 +52,7 @@
   "iv"  #'rectangle-number-lines
   "nf"  #'narrow-to-defun
   "nr"  #'narrow-to-region
+  "nw"  #'widen
   "oc"  #'fengqi/copy-current-buffer-file-name
   "oy"  #'youdao-dictionary-search-at-point+
   "qq"  #'save-buffers-kill-terminal

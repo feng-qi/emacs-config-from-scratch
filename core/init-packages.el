@@ -24,6 +24,8 @@
   ;; :config
   ;; (counsel-mode))
 (use-package swiper)
+  ;; :config
+  ;; (define-key swiper-all-map (kbd "<escape>") #'keyboard-quit))
 
 
 (use-package try)
@@ -61,8 +63,8 @@
 (use-package evil-surround
   :config
   (global-evil-surround-mode 1)
-  (define-key evil-normal-state-map (kbd "s") 'evil-surround-region)
-  (define-key evil-normal-state-map (kbd "S") 'evil-change-whole-line))
+  (define-key evil-visual-state-map (kbd "s") 'evil-surround-region)
+  (define-key evil-visual-state-map (kbd "S") 'evil-change-whole-line))
 (use-package evil-leader
   :config
   (progn
@@ -99,6 +101,8 @@
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
+  (setq company-minimum-prefix-length 2)
+  (setq company-idle-delay 0.3)
   (define-key company-active-map (kbd "C-j") 'company-select-next)
   (define-key company-active-map (kbd "C-k") 'company-select-previous)
   (define-key company-search-map (kbd "C-j") 'company-select-next)
