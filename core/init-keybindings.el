@@ -14,6 +14,7 @@
 (require 'evil)
 (require 'evil-leader)
 (evil-leader/set-key
+  "0"   #'treemacs-select-window
   "1"   #'winum-select-window-1
   "2"   #'winum-select-window-2
   "3"   #'winum-select-window-3
@@ -28,6 +29,7 @@
   "au"  #'undo-tree-visualize
   "bb"  #'helm-mini
   "bd"  #'kill-buffer
+  "br"  #'revert-buffer
   "bs"  #'switch-to-scratch-buffer
   "bv"  #'mark-whole-buffer
   "by"  #'copy-whole-buffer-to-clipboard
@@ -43,6 +45,7 @@
   "ff"  #'helm-find-files
   "fr"  #'helm-recentf
   "fs"  #'save-buffer
+  "ft"  #'treemacs
   "fx"  #'hexl-find-file
   "gs"  #'magit-status
   "iv"  #'rectangle-number-lines

@@ -123,12 +123,6 @@
         shell-pop-full-span       t)
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
-(use-package smart-mode-line
-  :config
-  (setq sml/theme 'respectful
-        sml/no-confirm-load-theme t)
-  (sml/setup))
-
 (use-package htmlize)
 (use-package youdao-dictionary)
 (use-package chinese-wbim
@@ -145,6 +139,25 @@
   :ensure t
   :config
   (add-hook 'haskell-mode-hook 'my-haskell-mode-config))
+
+(use-package treemacs
+  :defer t)
+(use-package treemacs-evil
+  :after treemacs evil)
+
+
+;; ------------ UI -----------------
+
+;; (use-package smart-mode-line
+;;   :config
+;;   (setq sml/theme 'respectful
+;;         sml/no-confirm-load-theme t)
+;;   (sml/setup))
+
+(use-package doom-modeline
+  :defer t
+  :config (setq doom-modeline-height 20)
+  :hook (after-init . doom-modeline-init))
 
 
 (provide 'init-packages)
