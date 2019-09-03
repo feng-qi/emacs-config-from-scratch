@@ -1,6 +1,8 @@
 (setq package-archives
-      '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-        ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa". "https://melpa.org/packages/")))
+;;       '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 (package-initialize)
 (prefer-coding-system 'utf-8)
@@ -82,6 +84,7 @@
 (require 'init-functions)
 (require 'init-keybindings)
 
+(load-theme 'zenburn t)
 
 (setq custom-file (expand-file-name "customize-group-setup.el" user-emacs-directory))
 (load custom-file 'no-error 'no-message)
