@@ -84,8 +84,6 @@
 (require 'init-functions)
 (require 'init-keybindings)
 
-(load-theme 'zenburn t)
-
 (setq custom-file (expand-file-name "customize-group-setup.el" user-emacs-directory))
 (load custom-file 'no-error 'no-message)
 (put 'narrow-to-region 'disabled nil)

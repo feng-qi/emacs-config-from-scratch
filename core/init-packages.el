@@ -13,10 +13,9 @@
   (define-key helm-map (kbd "C-j")           #'helm-next-line)
   (define-key helm-map (kbd "C-k")           #'helm-previous-line)
   (helm-mode 1))
-(use-package helm-ag)
+(use-package helm-ag
+  :after helm)
 
-(use-package evil-magit
-  :defer t)
 (use-package evil
   :config
   (evil-mode t)
@@ -26,36 +25,45 @@
         evil-motion-state-cursor   '("plum3" box)
         evil-replace-state-cursor  '("chocolate" (hbar . 2))
         evil-operator-state-cursor 'evil-half-cursor))
+(use-package evil-magit
+  :after magit)
 (use-package evil-exchange
-  :defer t
+  :after evil
   :config
   ;; (setq evil-exchange-key (kbd "gx"))
   (evil-exchange-install))
-(use-package evil-iedit-state)
-(use-package evil-nerd-commenter)
+(use-package evil-iedit-state
+  :after evil)
+(use-package evil-nerd-commenter
+  :after evil)
 (use-package evil-numbers
-  :defer t)
+  :after evil)
 (use-package evil-surround
-  :defer t
+  :after evil
   :config
   (global-evil-surround-mode 1)
   (define-key evil-visual-state-map (kbd "s") 'evil-surround-region)
   (define-key evil-visual-state-map (kbd "S") 'evil-change-whole-line))
 (use-package evil-leader
+  :after evil
   :config
   (progn
     (global-evil-leader-mode)
     (evil-leader/set-leader "<SPC>")))
 (use-package evil-unimpaired
-  :defer t
+  :after evil
   :load-path "elpa/"
   :config (evil-unimpaired-mode))
 (use-package evil-visualstar
-  :defer t
+  :after evil
   :config
   (global-evil-visualstar-mode t))
+(use-package treemacs-evil
+  :after (treemacs evil))
 
 
+(use-package magit
+  :defer t)
 ;; (use-package ivy
 ;;   :config
 ;;   (ivy-mode)
@@ -73,11 +81,6 @@
 
 (use-package try
   :defer t)
-(use-package magit
-  :defer t
-  :config
-  (with-eval-after-load
-      (require 'evil-magit)))
 (use-package which-key
   :defer t
   :config
@@ -88,13 +91,12 @@
   (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
   (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "`" nil :actions nil))
 (use-package org-bullets
-  :defer t
+  :after org
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 ;; (use-package solarized-theme
 ;;   :defer t)
-(use-package zenburn-theme
-  :defer t)
+(use-package zenburn-theme)
 (use-package winum
   :config (winum-mode))
 (use-package mwim)
@@ -126,7 +128,7 @@
   (define-key company-search-map (kbd "C-k") 'company-select-previous))
 
 (use-package company-c-headers
-  :defer t
+  :after company
   :config
   (add-to-list 'company-backends 'company-c-headers))
 
@@ -152,13 +154,12 @@
 ;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 (use-package haskell-mode
+  :mode "\\.l?hs\\'"
   :config
   (add-hook 'haskell-mode-hook 'my-haskell-mode-config))
 
 (use-package treemacs
   :defer t)
-(use-package treemacs-evil
-  :after treemacs evil)
 
 
 ;; ------------ UI -----------------
